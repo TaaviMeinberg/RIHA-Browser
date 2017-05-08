@@ -75,6 +75,10 @@ function Browser(infosystemsUrl) {
       addSelectFilter(column);
     }
   }
+  
+  function getInstitutionName(token){
+	  return token.substring(token.indexOf("nimetus")+8);
+  }
 
   self._createTableRows = function(data) {
     var template = $('#row-template').html();
@@ -84,11 +88,12 @@ function Browser(infosystemsUrl) {
       newRow.attr('title', JSON.stringify(infosystem));
       newRow.find('.owner').text(infosystem.owner.code);
       newRow.find('.name').text(infosystem.name);
+      newRow.find('.objective').text(infosystem.objective);
       newRow.find('.last-modified').text(infosystem.meta && infosystem.meta.system_status ? infosystem.meta.system_status.timestamp : '');
       newRow.find('.status').text(infosystem.meta && infosystem.meta.system_status ? infosystem.meta.system_status.status : '');
       newRow.find('.approved').text(infosystem.meta && infosystem.meta.approval_status ? infosystem.meta.approval_status.timestamp : '');
       newRow.find('.approval-status').text(infosystem.meta && infosystem.meta.approval_status ? infosystem.meta.approval_status.status : '');
-      newRow.find('.objective').text(infosystem.objective);
+      newRow.find('.institutionName').text(infosystem.meta && infosystem.meta.approval_status ? getInstitutionName(infosystem.meta.approval_status.token) : '');
       tbody.append(newRow);
     });
   }
