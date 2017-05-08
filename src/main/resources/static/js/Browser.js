@@ -77,7 +77,7 @@ function Browser(infosystemsUrl) {
   }
   
   function getInstitutionName(token){
-	  return token.substring(token.indexOf("nimetus")).replace(":", " : ");
+	  return token.substring(token.indexOf("nimetus")+8);
   }
 
   self._createTableRows = function(data) {
@@ -94,7 +94,6 @@ function Browser(infosystemsUrl) {
       newRow.find('.approved').text(infosystem.meta && infosystem.meta.approval_status ? infosystem.meta.approval_status.timestamp : '');
       newRow.find('.approval-status').text(infosystem.meta && infosystem.meta.approval_status ? infosystem.meta.approval_status.status : '');
       newRow.find('.institutionName').text(infosystem.meta && infosystem.meta.approval_status ? getInstitutionName(infosystem.meta.approval_status.token) : '');
-      console.log(infosystem);
       tbody.append(newRow);
     });
   }
