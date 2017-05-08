@@ -90,7 +90,9 @@ function Browser(infosystemsUrl) {
       newRow.find('.approved').text(infosystem.meta && infosystem.meta.approval_status ? infosystem.meta.approval_status.timestamp : '');
       newRow.find('.approval-status').text(infosystem.meta && infosystem.meta.approval_status ? infosystem.meta.approval_status.status : '');
       newRow.find('.institutionName').text(infosystem.token);
+      
       tbody.append(newRow);
     });
+    console.log(infosystem);
   }
 }
