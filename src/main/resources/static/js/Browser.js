@@ -77,7 +77,7 @@ function Browser(infosystemsUrl) {
   }
   
   function getInstitutionName(token){
-	  return token.substring(token.indexOf("nimetus")+8, token.indexOf("}")-1);
+	  return token.substring(token.indexOf("nimetus")+8, token.lastIndexOf("}")-1);
   }
 
   self._createTableRows = function(data) {
